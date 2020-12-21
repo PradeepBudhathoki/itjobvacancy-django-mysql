@@ -1,0 +1,29 @@
+{% extends "itjob/base.html "%}
+
+{% block title %}DetailsPage{% endblock title %}
+
+{% block content %}
+    <article class="media content-section">
+        <img class = "rounded-circle article-img" src="{{ object.company.image.url}}">
+        <div class="media-body">
+        <div class="article-metadata">
+            <a class="mr-2" >{{ object.company }}</a>
+            <small class="text-muted"> Apply before: {{ object.apply_before|date:"F d, Y" }}</small>
+            <div>
+                <a class ="btn btn-outline-secondary btn-sm mt-1 mb-2" href="{% url 'vacancy-update' object.vacancy_id %}">Update</a>
+                <a class= "btn btn-outline-danger btn-sm mt-1 mb-2" href="{%url 'vacancy-delete' object.vacancy_id %} ">Delete</a>
+            </div>
+        </div>
+        <h2><a class="article-title" >{{ object.title }}</a></h2>
+        <p class="article-content">Category: {{ object.category }}</p>
+        <p class="article-content">Technical Skills: {{object.skill}}</p>
+        <p class="article-content">Education: {{object.education}}</p>
+        <p class="article-content">Salary: {{object.salary}}</p>
+        <p class="article-content">Requirements:<br> {{object.requirements}}</p>
+        <button class="btn btn-outline-info mb-4" >Apply</button>
+
+        </div>
+    </article>
+
+
+{% endblock content %}
