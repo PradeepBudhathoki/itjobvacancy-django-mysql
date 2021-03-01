@@ -38,21 +38,20 @@ class Vacancy(models.Model):
     vacancy_id=models.AutoField(primary_key=True)
     company=models.ForeignKey(Company,on_delete=models.CASCADE)
     skill=models.ForeignKey(Skill,models.DO_NOTHING)
-    
     category=models.ForeignKey(Category,models.DO_NOTHING)
     title = models.CharField(max_length=100)
     published_date = models.DateField(default=timezone.now)
-    apply_before= models.DateField(null=True,blank=True)
-    req_no=models.IntegerField(default=1)
-    salary=models.CharField(max_length=10)
-    education=models.CharField(max_length=60)
-    requirements=models.TextField()
+    apply_before= models.DateField(null=True)
+    req_no=models.IntegerField(null=True)
+    salary=models.CharField(max_length=10,null=True)
+    education=models.CharField(max_length=60,null=True)
+    requirements=models.TextField(null=True)
+
+    
 
     def __str__(self):
         return self.title
 
 
     def get_absolute_url(self):      
-        return reverse('itjob-detail', kwargs={'pk':self.vacancy_id})
-
-    
+        return reverse('vacancy-detail', kwargs={'pk':self.vacancy_id})

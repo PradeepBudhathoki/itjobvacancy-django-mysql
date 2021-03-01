@@ -22,6 +22,6 @@ class VacancyForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(VacancyForm,self).__init__(*args, **kwargs)
-        self.fields['company'].empty_label = "Select" #for displaying select instead of ...
+        self.fields['company'].empty_label = "" #for displaying select instead of ...
         self.fields['skill'].empty_label = "Select"
         

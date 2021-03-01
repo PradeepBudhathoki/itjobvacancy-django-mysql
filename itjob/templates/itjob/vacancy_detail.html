@@ -9,13 +9,16 @@
         <div class="article-metadata">
             <a class="mr-2" >{{ object.company }}</a>
             <small class="text-muted"> Apply before: {{ object.apply_before|date:"F d, Y" }}</small>
-            <div>
-                <a class ="btn btn-outline-secondary btn-sm mt-1 mb-2" href="{% url 'vacancy-update' object.vacancy_id %}">Update</a>
-                <a class= "btn btn-outline-danger btn-sm mt-1 mb-2" href="{%url 'vacancy-delete' object.vacancy_id %} ">Delete</a>
-            </div>
+            {% if user.is_authenticated %}
+                <div>
+                    <a class ="btn btn-outline-secondary btn-sm mt-1 mb-2" href="{% url 'vacancy-update' object.vacancy_id %}">Update</a>
+                    <a class= "btn btn-outline-danger btn-sm mt-1 mb-2" href="{%url 'vacancy-delete' object.vacancy_id %} ">Delete</a>
+                </div>
+            {% endif %}
         </div>
         <h2><a class="article-title" >{{ object.title }}</a></h2>
         <p class="article-content">Category: {{ object.category }}</p>
+        <p class="article-content">Published date: {{ object.published_date }}</p>
         <p class="article-content">Technical Skills: {{object.skill}}</p>
         <p class="article-content">Education: {{object.education}}</p>
         <p class="article-content">Salary: {{object.salary}}</p>
