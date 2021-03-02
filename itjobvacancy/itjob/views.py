@@ -6,7 +6,7 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from django.http import HttpResponse
 
 import mysql.connector as mc
-con = mc.connect(host="localhost", user="root", passwd="lm10goat", database='vacancy')
+con = mc.connect(host="localhost", user="root", passwd="", database='vacancy')
 print('Successfully connected to database')
 cur=con.cursor()
 

@@ -1,0 +1,20 @@
+{% extends "itjob/base.html" %}
+
+{% block content %}
+    {% for vacancy in vacancys %}
+        <article class="media content-section">
+            <img class = "rounded-circle article-img" src="{{ vacancy.company.image.url}}">
+            <div class="media-body">
+            <div class="article-metadata">
+                <a class="mr-2" ></a>{{ vacancy.company }}
+                <small class="text-muted">deadline {{ vacancy.apply_before|date:"F d, Y" }}</small>
+            </div>
+            <h2><a class="article-title" href="{% url 'vacancy-detail' vacancy.vacancy_id %}"> {{ vacancy.title }}</a></h2>
+            
+            <p class="article-content">Categories: {{ vacancy.category }}</p>
+            <p class="article-content">No. of vacancys:{{vacancy.req_no}}</p>
+            
+            </div>
+        </article>
+    {% endfor %}
+{% endblock content %}
